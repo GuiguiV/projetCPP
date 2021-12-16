@@ -51,6 +51,6 @@ void Matrice::mult(Matrice autre){
 
 int main(int argc, char** argv){
 
-
+    Matrice mat(std::vector<double>{1},1,1);
 }
 
