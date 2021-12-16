@@ -50,7 +50,7 @@ void Matrice::mult(Matrice autre){
 }
 
 int main(int argc, char** argv){
-
+//ya rien ici
 
 }
 
