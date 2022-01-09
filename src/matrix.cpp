@@ -107,26 +107,31 @@ void Matrix::reshape(int new_l,int new_c){
     this->n_cols = new_c;
 }
 
-void Matrix::print(){
+std::string Matrix::print(){
+    std::string s{""};
     for(int i = 0;i<this->n_lines;i++){
         for(int j = 0;j<this->n_cols;j++){
-            std::cout << this->operator()(i,j) << " ";
+            s += std::to_string(this->operator()(i,j));
+            s+= " ";
         }
-        std::cout << std::endl;
+        s += "\n";
     }
+    return s;
 }
+
+
 void Matrix::fill(double x){
     std::fill(this->matrix.begin(),this->matrix.end(),x);
 }
 
-//permet de remplir la
+//permet de remplir la n-ieme diagonale
 void Matrix::fill_diag(double x, int n){
 
     int start = n;
     if(n < 0){
-        start = -1 * n * this->n_cols; 
+        start = std::abs(n) * this->n_cols; 
     }
-    int step = (n_cols+1) + n;
+    int step = n_cols + 1;
     for(int i = start; i < (this->n_lines * this->n_cols); i += step){
         this->matrix[i] = x;
     }

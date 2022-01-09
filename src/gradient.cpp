@@ -1,10 +1,15 @@
 #include "../include/gradient.h"
 
-Matrix conjugate_gradient(Matrix x0, Matrix A, Matrix b, Matrix epsilon){
+Matrix conjugate_gradient(Matrix x0, Matrix A, Matrix b){
     Matrix r = b - A*x0;
     Matrix x = x0;
     Matrix p = r;
-    while(r > epsilon){
+    double epsilon = 0.1;
+    Matrix eps(2,1);
+    eps.fill(epsilon);
+
+    while(r > eps){
+
         double alphak = (r.T()*r)(0,0)/(p.T()*A*p)(0,0);
         x = x + alphak*p;
         Matrix old_r = r;
