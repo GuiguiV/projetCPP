@@ -3,7 +3,9 @@
 
 #include <array>
 #include <vector>
+#include <string>
 #include <iostream>
+#include <cmath>
 
 class Matrix{
     public:
@@ -16,12 +18,12 @@ class Matrix{
     Matrix operator*(double scalar);
     Matrix T();
     double operator()(int i, int j);
-    bool operator>(Matrix other); //checks if every coef is superior
+    bool operator>(Matrix other); //checks if every coef is superior (absolute comparison)
     void set(int i, int j, double value);
     void reshape(int new_l,int new_c);
     void fill(double x);
     void fill_diag(double x,int n); //fills nth diagonal
-    void print();
+    std::string print();
     
     private:
     int n_lines;
