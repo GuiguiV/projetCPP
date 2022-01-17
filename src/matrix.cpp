@@ -45,7 +45,7 @@ Matrix Matrix::operator*(Matrix other){
             for(int k=0;k<this->n_cols;k++){
                 pij += this->operator()(i,k) * other(k,j);
             }
-            product.set(i,j,pij);
+            product(i,j) = pij;
         }
         
     }
@@ -66,16 +66,18 @@ Matrix operator*(double scalar,Matrix mat){
 }
 
 
-double Matrix::operator()(int i, int j){
+double& Matrix::operator()(int i, int j){
     return this->matrix[n_cols*i + j];
 }
 
+//true if one of the coeffs is bigger
 bool Matrix::operator>(Matrix other){
-    bool out = true;
     for(int i=0;i<this->n_lines*this->n_cols;i++){
-        out *= (std::abs(this->matrix[i]) > std::abs(other.matrix[i]));
+        if(std::abs(this->matrix[i]) > std::abs(other.matrix[i])){
+             return true;
+        }
     }
-    return out;
+    return false;
 }
 
 Matrix Matrix::T(){
@@ -87,16 +89,12 @@ Matrix Matrix::T(){
     }else{
         for(int i = 0;i<n_lines;i++){
             for(int j=0;i<n_cols;j++){
-                m_T.set(i,j, this->operator()(j,i));
+                m_T(i,j) = this->operator()(j,i);
             }
         }
         m_T.reshape(this->n_cols,this->n_lines);
     }
     return m_T;
-}
-
-void Matrix::set(int i,int j, double value){
-    this->matrix[n_cols * i + j] = value;
 }
 
 void Matrix::reshape(int new_l,int new_c){

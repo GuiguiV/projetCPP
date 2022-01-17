@@ -31,18 +31,14 @@ int main(int argc, char** argv){
     K.fill_diag(-2*D,0);
     K.fill_diag(D,-1);
     K.fill_diag(D,1);
-    K.set(0,0,-D);
-    K.set(N-1,N-1,-D);
+    K(0,0) =-D;
+    K(N-1,N-1) =-D;
 
     K = K*(1./(delta_x * delta_x));
-
     Matrix A = Id - delta_t*K;
     Matrix Xf = euler_explicite(delta_t,tf,X0,K);
+    Xf = euler_implicite(delta_t,tf,X0,K);
 
-    std::ofstream file;
-    file.open("./out.txt");
-    file << Xf.T().print();
-    file.close();
 
 
     return 0;

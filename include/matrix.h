@@ -17,9 +17,8 @@ class Matrix{
     Matrix operator*(Matrix other);
     Matrix operator*(double scalar);
     Matrix T();
-    double operator()(int i, int j);
-    bool operator>(Matrix other); //checks if every coef is superior (absolute comparison)
-    void set(int i, int j, double value);
+    double& operator()(int i, int j);
+    bool operator>(Matrix other); //checks if one is superior (absolute comparison)
     void reshape(int new_l,int new_c);
     void fill(double x);
     void fill_diag(double x,int n); //fills nth diagonal
