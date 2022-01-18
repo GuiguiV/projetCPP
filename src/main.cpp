@@ -10,10 +10,10 @@ constexpr double c_init(double x);
 int main(int argc, char** argv){
     double D = 1.;
     double tf = 0.5;
-    double delta_t = 0.01;
+    double delta_t = 0.0001;
     double delta_x = 0.1;
 
-    double N = 1/delta_x;
+    int N = (int)(1/delta_x + 1);
 
 
     Matrix K(N,N);
@@ -32,7 +32,9 @@ int main(int argc, char** argv){
     K.fill_diag(D,-1);
     K.fill_diag(D,1);
     K(0,0) =-D;
+    K(0,1) = 0;
     K(N-1,N-1) =-D;
+    K(N-1,N-2) = 0;
 
     K = K*(1./(delta_x * delta_x));
     Matrix A = Id - delta_t*K;
@@ -46,7 +48,7 @@ int main(int argc, char** argv){
 
 constexpr double c_init(double x){
 
-    return (.5 + sin(2*M_PI*x) + .5*cos(2*M_PI*x));
+    return (.5 + sin(2*M_PI*x) - .5*cos(2*M_PI*x));
 }
 
 void test1(){
