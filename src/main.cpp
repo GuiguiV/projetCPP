@@ -9,9 +9,10 @@ constexpr double c_init(double x);
 
 int main(int argc, char** argv){
     double D = 1.;
+    
     double tf = 0.5;
     double delta_t = 0.0001;
-    double delta_x = 0.1;
+    double delta_x = 0.01;
 
     int N = (int)(1/delta_x + 1);
 
