@@ -1,4 +1,4 @@
-#Projet d'informatique
+Projet d'informatique
 
 Pour les résultats du simulateur, voir le notebook visualisation.
 Q bonus n°4 : 
