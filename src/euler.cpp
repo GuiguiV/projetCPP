@@ -1,10 +1,8 @@
 #include "../include/euler.h"
-#include <cmath>
-#include <fstream>
 
-Matrix euler_explicite(float delta_T, float t_f, Matrix T, Matrix K){
+Matrix euler_explicite(double delta_T, double delta_X, double t_f, Matrix T, Matrix K){
     std::ofstream file;
-    file.open("./out_expl.txt");
+    file.open("../results/out_expl" + std::to_string(delta_T) + std::to_string(delta_X) + ".txt");
 
     int N = (int)(std::ceil(t_f/delta_T));
     for(int i=0;i<N;i++){
@@ -16,10 +14,10 @@ Matrix euler_explicite(float delta_T, float t_f, Matrix T, Matrix K){
 
 }
 
-Matrix euler_implicite(float delta_T, float t_f, Matrix T, Matrix K){
+Matrix euler_implicite(double delta_T, double delta_X, double t_f, Matrix T, Matrix K){
     int N = (int)(std::ceil(t_f/delta_T));
     std::ofstream file;
-    file.open("./out_impl.txt");
+    file.open("../results/out_impl" + std::to_string(delta_T) + std::to_string(delta_X) + ".txt");
 
     Matrix Id = Matrix(K);
     Id.fill(0.0);
