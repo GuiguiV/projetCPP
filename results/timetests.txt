@@ -1,0 +1,12 @@
+dx,dt : 0.1 , 0.1
+Durée euler explicite : 0 ms
+Durée euler implicite : 1 ms
+
+dx,dt : 0.1 , 0.01
+Durée euler explicite : 2 ms
+Durée euler implicite : 4 ms
+
+dx,dt : 0.1 , 0.001
+Durée euler explicite : 6 ms
+Durée euler implicite : 7 ms
+
